@@ -29,6 +29,13 @@ public class Bank {
         /*
          * Implement this function
          */
+        bankAccount.setAccountBalance(bankAccount.getAccountBalance() - amount);
+        if ((bankAccount.getAccountBalance() - amount) > 0) {
+    return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -45,6 +52,13 @@ public class Bank {
         /*
          * Implement this function
          */
+        bankAccount.setAccountBalance(bankAccount.getAccountBalance() + amount);
+        if ((bankAccount.getAccountBalance() + amount) > bankAccount.getAccountBalance()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -64,6 +78,15 @@ public class Bank {
         /*
          * Implement this function
          */
+        destination.setAccountBalance(destination.getAccountBalance() + amount);
+        source.setAccountBalance(source.getAccountBalance() - amount);
+        if ((destination.getAccountBalance() + amount) > destination.getAccountBalance()
+                && (source.getAccountBalance() - amount < source.getAccountBalance())) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -77,9 +100,11 @@ public class Bank {
         /*
          * Implement this function
          */
-    }
+        bankAccount.setOwnerName(name);
 
-    public static int totalAccounts = 0;
+    }
+    private static int totalAccounts = 0;
+
     /**
      * Uses static variable to get number of bank accounts opened.
      *
@@ -89,6 +114,10 @@ public class Bank {
         /*
          * Implement this function
          */
+        return totalAccounts;
+    }
+    public static void increment() {
+        totalAccounts++;
     }
 
     /**
